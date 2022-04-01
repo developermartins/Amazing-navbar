@@ -3,17 +3,27 @@
 }
 
 body {
-    background-color: rgb(17, 17, 17);
+    background-color: var(--background-color);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+    --icon-size: 2rem;
+    --indicator-spacing: calc(var(--icon-size) / 8);
+    --border-radius: calc(var(--icon-size) / 4);
+    --nav-item-padding: calc(var(--icon-size) / 2);
+    --background-color: rgb(17, 17, 17);
+    --nav-bg-color: rgb(41, 41, 41);
+}
+
 .navbar-container {
-    background-color: rgb(41, 41, 41);
-    border-radius: .8rem;
+    background-color: var(--nav-bg-color);
+    border-radius: var(--border-radius);
     max-width: max-content;
     margin: 0 auto;
-    margin-top: 10rem; 
+    margin-top: 10rem;
+    padding: 0 calc(var(--nav-item-padding) * 1.5);
 }
 
 .list {
@@ -23,10 +33,14 @@ body {
     list-style: none;
 }
 
+.list li {
+    height: 4em;
+}
+
 .list a {
     color: rgb(0, 195, 255);
     text-decoration: none;
-    padding: 1em;
+    padding: var(--nav-item-padding);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,9 +48,54 @@ body {
 
 .list .text {
     font-size: .8em;
+    opacity: 0;
+    pointer-events: none;
+    visibility: visible;
+    transition: opacity 500ms ease-in-out;
+}
+
+.list .active  .text{
+    visibility: hidden;
+    pointer-events: all;
+    opacity: 1;
+}
+
+.list .icon {
+    position: relative;
+    z-index: 1;
 }
 
 .list .icon img {
-    width: 1.5em;
-    height: 1.5em;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: block;
+}
+
+.list .active .icon {
+   transform: translateY(calc(-50% - var(--nav-item-padding)));
+}
+
+.list .active .icon::after {
+    content: "";
+    position: absolute;
+    background-color:  rgba(0, 195, 255, 0.849);
+    width: calc(var(--icon-size) * 2);
+    height: calc(var(--icon-size) * 2);
+    top: calc(-.1 * var(--icon-size));
+    /* left: calc(-.5 * var(--icon-size)); */
+    transform: translate(-25%, -25%);
+    border-radius: 100%;
+    z-index: -1;
+}
+
+.list .active .icon::before {
+    content: "";
+    position: absolute;
+    background-color:  var(--background-color);
+    width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+    height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+    top: calc(-.6 * var(--icon-size) - var(--indicator-spacing));
+    left: calc(-.5 * var(--icon-size) - var(--indicator-spacing));
+    border-radius: 100%;
+    z-index: -1;
 }
