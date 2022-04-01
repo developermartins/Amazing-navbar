@@ -75,27 +75,50 @@ body {
    transform: translateY(calc(-50% - var(--nav-item-padding)));
 }
 
-.list .active .icon::after {
+.list .active .icon::after, 
+.list .active .icon::before {
     content: "";
     position: absolute;
-    background-color:  rgba(0, 195, 255, 0.849);
-    width: calc(var(--icon-size) * 2);
-    height: calc(var(--icon-size) * 2);
-    top: calc(-.1 * var(--icon-size));
-    /* left: calc(-.5 * var(--icon-size)); */
-    transform: translate(-25%, -25%);
     border-radius: 100%;
     z-index: -1;
 }
 
+.list .active .icon::after {
+    background-color:  rgba(0, 195, 255, 0.849);
+    width: calc(var(--icon-size) * 2);
+    height: calc(var(--icon-size) * 2);
+    top: calc(-.1 * var(--icon-size));
+    /* left: calc(.5 * var(--icon-size)); */
+    transform: translate(-25%, -25%);
+}
+
 .list .active .icon::before {
-    content: "";
-    position: absolute;
     background-color:  var(--background-color);
     width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
     height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
     top: calc(-.6 * var(--icon-size) - var(--indicator-spacing));
     left: calc(-.5 * var(--icon-size) - var(--indicator-spacing));
-    border-radius: 100%;
-    z-index: -1;
+}
+
+.list .active {
+    position: relative;
+}
+
+.list .active::before {
+    content: "";
+    box-sizing: content-box;
+    position: absolute;
+    width: var(--border-radius);
+    height: var(--border-radius);
+    background-color: var(--nav-bg-color);
+    z-index: 1;
+    top: calc(-1 * var(--indicator-spacing));
+    left: calc(0.8 * var(--indicator-spacing));
+    transform: translateX(-100%);
+    border-top-right-radius: 100%;
+    border-width: calc(var(--indicator-spacing));
+    border-color: var(--background-color);
+    border-style: solid;
+    border-bottom: none;
+    border-left: none;
 }
