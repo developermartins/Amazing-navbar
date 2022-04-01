@@ -113,7 +113,7 @@ body {
     background-color: var(--nav-bg-color);
     z-index: 1;
     top: calc(-1 * var(--indicator-spacing));
-    left: calc(0.8 * var(--indicator-spacing));
+    left: calc(0.7 * var(--indicator-spacing));
     transform: translateX(-100%);
     border-top-right-radius: 100%;
     border-width: calc(var(--indicator-spacing));
@@ -121,4 +121,23 @@ body {
     border-style: solid;
     border-bottom: none;
     border-left: none;
+}
+
+.list .active::after {
+    content: "";
+    box-sizing: content-box;
+    position: absolute;
+    width: var(--border-radius);
+    height: var(--border-radius);
+    background-color: var(--nav-bg-color);
+    z-index: 1;
+    top: calc(-1 * var(--indicator-spacing));
+    right: calc(-5.5 * var(--indicator-spacing));
+    transform: translateX(-100%);
+    border-top-left-radius: 100%;
+    border-width: calc(var(--indicator-spacing));
+    border-color: var(--background-color);
+    border-style: solid;
+    border-bottom: none;
+    border-right: none;
 }
