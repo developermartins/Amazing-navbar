@@ -51,7 +51,7 @@ body {
     opacity: 0;
     pointer-events: none;
     visibility: visible;
-    transition: opacity 500ms ease-in-out;
+    transition: 500ms ease-in-out;
     position: absolute;
     bottom: calc(.5 * var(--nav-item-padding));
     transform: translateY(50%);
