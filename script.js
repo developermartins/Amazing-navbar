@@ -1,3 +1,5 @@
+const indicator = document.querySelector("[data-indicator]");
+
 document.addEventListener("click", e => {
     let anchor;
 
@@ -8,6 +10,9 @@ document.addEventListener("click", e => {
     }
 
     if (anchor != null) {
+        const allAnchors = [...document.querySelectorAll("a")];
+        const index = allAnchors.indexOf(anchor);
+        indicator.style.setProperty("--position", index);
         document.querySelectorAll("a").forEach(elem => {
             elem.classList.remove("active");
         })
