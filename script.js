@@ -7,7 +7,7 @@ document.addEventListener("click", e => {
         anchor = e.target;
     } else {
         anchor = e.target.closest("a");
-    }
+    };
 
     if (anchor != null) {
         const allAnchors = [...document.querySelectorAll("a")];
@@ -15,7 +15,7 @@ document.addEventListener("click", e => {
         indicator.style.setProperty("--position", index);
         document.querySelectorAll("a").forEach(elem => {
             elem.classList.remove("active");
-        })
+        });
         anchor.classList.add("active");
-    }
-})
+    };
+});
